@@ -14,21 +14,21 @@ set(CMAKE_C_COMPILER /usr/bin/gcc)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     # -g indicates to include debug symbols
     list(APPEND flags -std=c11 -Wall -Wextra -Werror -pedantic -g)
-    list(APPEND cxx-flags -std=c++2a -Wall -Wextra -Werror -pedantic -g)
+    list(APPEND cxx-flags -std=c++11 -Wall -Wextra -Werror -pedantic -g)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Analyze")
     # override gcc compiler to v10 for static analysis
     set(CMAKE_C_COMPILER /usr/bin/gcc-10)
     list(APPEND flags -std=c11 -Wall -Wextra -Werror -pedantic -g -fanalyzer)
-    list(APPEND cxx-flags -std=c++2a -Wall -Wextra -Werror -pedantic -g -fanalyzer)
+    list(APPEND cxx-flags -std=c++11 -Wall -Wextra -Werror -pedantic -g -fanalyzer)
     message(STATUS "enabling static analysis")
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "CI")
     set(CMAKE_BUILD_TYPE "Release")
     list(APPEND flags -std=c11 -Wall -Wextra -Werror -pedantic -I/usr/local/lib)
-    list(APPEND cxx-flags -std=c++2a -Wall -Wextra -Werror -pedantic -I/usr/local/lib)
+    list(APPEND cxx-flags -std=c++11 -Wall -Wextra -Werror -pedantic -I/usr/local/lib)
     # override the previous C compiler choice
     set(CMAKE_C_COMPILER /usr/bin/gcc-9)
 endif()
@@ -37,7 +37,7 @@ endif()
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
     list(APPEND flags -std=c11 -Wall -Wextra -Werror -pedantic)
-    list(APPEND cxx-flags -std=c++2a -Wall -Wextra -Werror -pedantic)
+    list(APPEND cxx-flags -std=c++11 -Wall -Wextra -Werror -pedantic)
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/include)

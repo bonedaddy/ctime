@@ -11,5 +11,9 @@
     "golang"
   ],
   "dependencies": {},
-  "src": []
+  "src": [
+    "./include/ctime.h",
+    "./include/version.h",
+    "./src/ctime.c"
+  ]
 }
